@@ -1,1 +1,13 @@
-
+streamlit
+torch
+torchvision
+transformers
+faster-whisper
+soundfile
+opencv-python-headless
+pillow
+numpy
+pandas
+matplotlib
+huggingface_hub
+imageio-ffmpeg
