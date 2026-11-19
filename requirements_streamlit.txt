@@ -1,0 +1,11 @@
+streamlit
+numpy
+pandas
+torch
+torchvision
+transformers
+faster-whisper
+soundfile
+opencv-python-headless
+pillow
+matplotlib
