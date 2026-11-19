@@ -14,6 +14,16 @@ import matplotlib.pyplot as plt
 import imageio_ffmpeg
 from huggingface_hub import hf_hub_download
 
+# Compatibility shim: some PyAV builds do not accept the
+# `metadata_errors` keyword that faster-whisper passes to av.open().
+# Ignore that optional keyword while preserving all other arguments.
+import av
+_original_av_open = av.open
+def _av_open_compat(*args, **kwargs):
+    kwargs.pop("metadata_errors", None)
+    return _original_av_open(*args, **kwargs)
+av.open = _av_open_compat
+
 from faster_whisper import WhisperModel
 from transformers import (
     AutoTokenizer, AutoModel,
