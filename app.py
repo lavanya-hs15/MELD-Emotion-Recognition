@@ -278,7 +278,7 @@ if uploaded is not None:
 
             st.subheader("2. Recognized speech transcript")
             transcript_view = results[["start", "end", "text"]].copy()
-            st.dataframe(transcript_view, use_container_width=True, hide_index=True)
+            st.dataframe(transcript_view, width="stretch", hide_index=True)
 
             st.subheader("3. Sampled video frames")
             for i, seg in enumerate(valid_segments):
@@ -286,14 +286,14 @@ if uploaded is not None:
                     cols = st.columns(min(4, len(seg["preview_frames"])))
                     for j, frame in enumerate(seg["preview_frames"]):
                         with cols[j % len(cols)]:
-                            st.image(frame, use_container_width=True)
+                            st.image(frame, width="stretch")
 
             st.subheader("4. Final emotion predictions")
             display_df = results[["start", "end", "text", "predicted_emotion", "confidence"]].copy()
             display_df["start"] = display_df["start"].map(lambda x: f"{x:.2f}s")
             display_df["end"] = display_df["end"].map(lambda x: f"{x:.2f}s")
             display_df["confidence"] = display_df["confidence"].map(lambda x: f"{x:.1%}")
-            st.dataframe(display_df, use_container_width=True, hide_index=True)
+            st.dataframe(display_df, width="stretch", hide_index=True)
 
             st.subheader("5. Emotion timeline")
             emotions = list(dict.fromkeys(results["predicted_emotion"].tolist()))
