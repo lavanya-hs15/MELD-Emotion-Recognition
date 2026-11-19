@@ -1,11 +1,14 @@
 streamlit
-numpy
-pandas
 torch
 torchvision
 transformers
 faster-whisper
+av>=14.0.0
 soundfile
 opencv-python-headless
 pillow
+numpy
+pandas
 matplotlib
+huggingface_hub
+imageio-ffmpeg
